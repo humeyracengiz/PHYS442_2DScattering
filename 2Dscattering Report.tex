@@ -1,0 +1,439 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\newcommand{\ts}{\textsuperscript}
+\usepackage{multicol}
+\usepackage[table]{xcolor}%
+
+
+
+%% Sets page size and margins
+\usepackage[a4paper,top=1.5cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{listings}
+\usepackage{gensymb}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref} 
+\usepackage{hyperref}
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\makeatletter
+\newenvironment{tablehere}
+  {\def\@captype{table}}
+  {}
+
+\newenvironment{figurehere}
+  {\def\@captype{figure}}
+  {}
+\makeatother
+
+\title{Scattering in Two Dimensions}
+\author{Hümeyra Cengiz}
+\date{\vspace{-5ex}}
+
+\begin{document}
+
+\maketitle
+
+\begin{large}
+\begin{center}
+Partner: Kaan Uluşahin • Date Performed: 19.05.2019 • Section: PHYS 442.01 
+\end{center}
+\end{large}
+
+
+\begin{abstract}
+Scattering in two dimensions is a fundamental experiment whose main principles are used in varying types of topics of physics, such as particle acceleration and collision in CERN and with a historical importance in Rutherford's Gold Foil experiment. In this experiment, small metal balls are shot to a cylinder target and from the data, the radius of the target is found with two different methods: integrating the differential cross section over all the values for scattering angle intervals and finding slope of sine of half angles using a linear fit. These two values compared with the measured radius by a Vernier caliper. First method yielded an error of $\epsilon_{1_{abs}} = 0.47 \ cm$ while the second did $\epsilon_{2_{abs}} = 0.20 \ cm$ with error-uncertainty ratios of $\varsigma_1 = 1.22$ and $\varsigma_2 = 1.07$.
+\end{abstract}
+
+\begin{multicols}{2}
+\section{Theory and Motivation}
+
+\subsection{Cross Section in Physics}
+
+In order to detect characteristics (e.g. shape) of any kind of particle/wave \footnote{\textit{de Broglie} and \textit{wave - particle duality}}, it is crucial to somehow interact with it. In our daily lives, we use light itself to perceive things, however for scientific purposes a beam of light strikes from an object and their varying wavelengths, positions and intensities give us a very good identification about the object itself. 
+
+However this process is unsuccessful for little objects. Magnification by lenses is an option for such a case and what a lens does is basically amplifying the intervals between positions of coming light beams. This magnifying tools work fine until where the light itself also behaves unpredictable and blurry. For these  cases, scattering is an important tool for physicists.
+
+In everyday speech, “cross section” refers to a slice of an object. A particle physicist might use the word this way, but more often it is used to mean the probability that two particles will collide and react in a certain way. For instance, when CMS physicists measure the “proton-proton to top-antitop” cross section, they are counting how many top-antitop pairs were created when a given number of protons were fired at each other.
+
+Early collision experiments were intended to measure the size of particles from their collision rate. Rutherford’s experiment, which collided alpha particles and gold nuclei in 1911, revealed that nuclei are much smaller than previously supposed. But soon, disparities arose: Neutrons are more likely to collide with certain nuclei when they are moving slowly than when they are fast. It is as though the neutrons change the area of their cross section mid-flight. Particles like neutrons are actually quantum clouds that pass through each other or interact with an energy-dependent probability — the likelihood of collision has little to do with a solid, cross-sectional area. Even though hard spheres is the wrong mental image, the term “cross section” stuck, and it’s common for a physicist to say, “this cross section depends on energy” when it would be nonsensical to imagine the size of the particle actually changing.\cite{CERN}
+
+In the first quarter of 20$^{th}$ century, the inner characteristics of an atom was an important and popular subject. In 1904, 7 years after he discovered electron,  J.J. Thomson came with the \textit{Plum Pudding Model}. He suggested that atom composed of tiny negative particles scattered through a spherical cloud of positive charge \cite{thom}. Between 1908 and 1913 at Ernest Rutherford's behest, Geiger and Marsden performed a series of experiments where they pointed a beam of alpha particles at a thin foil of metal and measured the scattering pattern by using a fluorescent screen \cite{gm}. According to Thomson's model,  $\alpha$ particles should pass through the plum pudding model of the atom with negligible deflection but what experiments showed that a small portion of the particles were deflected by the concentrated positive charge of the nucleus.
+
+\begin{center}
+
+\includegraphics[width = 0.9\columnwidth]{res.png}
+
+FIG 1: The Geiger-Marsden experiment \cite{res} \\
+Left: Expected results \ \ Right: Observed results
+\end{center}
+
+In the light of these, Rutherford discovered that most of the mass and positive charge of an atom is concentrated in a very small fraction of its volume, which he assumed to be at the very center, what we called as today nucleus \cite{rf}. How he concluded on this result is actually using the analogy of a rigid solid sphere, exactly the same with the case in our scattering in two dimensions experiment. The experiments conducted in massive colliders / particle accelerators (in e.g. DESY, CERN) have still the very same principles today.
+
+ 
+
+\section{Hypothesis}
+
+\begin{center}
+
+\includegraphics[width = 1\columnwidth]{schang.jpg}
+
+FIG 2: Geometry of the scattering in two dimensions \cite{gulmez}.
+
+\end{center}
+
+A projectile (a steel ball) shot towards the target with an impact parameter $b$ will scatter at an angle $\theta$ (FIG 2). Assuming that the distance between the target and the detector (pressure sensitive paper) is large, the scattering angle $\theta$ is given by \cite{gulmez} 
+
+\begin{equation}
+\dfrac{b}{r} = cos\dfrac{\theta}{2}.
+\end{equation}
+
+For an infinitesimal part of b
+
+\begin{equation}
+db = -\dfrac{r}{2}sin\dfrac{\theta}{2}d\theta.
+\end{equation}
+
+and thus the number of particles scattered at a given angle is
+
+\begin{equation} \label{first}
+dN = -Idb = \dfrac{Ir}{2}sin\dfrac{\theta}{2}d\theta.
+\end{equation}
+
+Where I is the incident flux from gun in form of shots/intercal. Since there is negative sign due to cosine's integration, we multiply the function again with negative one to receive an absolute value. \ref{first} is our first main equation to obtain $r$.
+
+If we want to derive the cross section $\zeta$ \footnote{since $\sigma$ is used for uncertainty, another greek lether would be a better choice}, we can derive it from
+
+\begin{equation}
+\dfrac{dN}{Id\theta} = \dfrac{r}{2}sin\dfrac{\theta}{2}.
+\end{equation}
+
+and
+
+\begin{equation}
+\dfrac{d\sigma}{d\theta} = \dfrac{dN}{Id\theta}
+\end{equation}
+
+with a series of calculations
+
+\begin{align}
+\int^{2\pi}_{0} d\sigma = \int^{2\pi}_{0}\dfrac{r}{2}sin\dfrac{\theta}{2}d\theta \\
+\sigma = -rcos\dfrac{\theta}{2}|^{2\pi}_{0} \\
+\sigma = r(cos0 - cos\pi) \\
+\end{align}
+\begin{equation}
+\zeta = 2r \label{second}
+\end{equation}
+
+\ref{second} is the second important equation to obtain $r$ in the following part of analysis.
+
+\section{Experimental Setup}
+
+\subsection{Schematic}
+
+\begin{center}
+
+\includegraphics[width = 1\columnwidth]{sch.jpg}
+
+FIG 3: A simple schematic of the experiment.
+\end{center}
+
+\subsection{Apparatus}
+
+\begin{itemize}
+
+\item Scattering Tray
+\item Pressure Sensitive Paper Tape
+\item 20 Steel Balls
+\item Vernier Caliper, ruler
+
+\end{itemize}
+
+\subsection{Procedure} 
+
+\begin{itemize}
+\item First, line the rim with the pressure sensitive paper very carefully. For the first couple of screw turns, balls are not hitting the target so when they start barely hitting the side of the target mark the initial position-r or +r (in our case it is -r).
+\item Shoot 20 balls providing equal pressure to each shot(In our case provided by only one experimenter shoot the balls at all times). Keep the cover on the tray while shooting.
+\item Move the gun towards the other side by turning the screw one full turn. Repeat the previous step and record the number of turns.
+\item Repeat the previous step as many times as necessary until the gun gets to the other end.
+\item Measure the diameter of the middle circle with Vernier caliper and the distance between the initial and the final positions of the gun.
+\end{itemize}
+
+\begin{center}
+
+\includegraphics[width=1\columnwidth]{IMG_20190419_121945.jpg} 
+FIG 4: Experiment setup( scattering tray)
+
+\end{center}
+
+\section{Data and Analysis w/ Uncertainty Propagation}
+
+\subsection{Raw Data}
+
+\begin{center}
+
+\begin{tabular}{c|c} 
+\multicolumn{2}{c}{Some Important Values}  \\
+\hline 
+Distance between initial\\ and final positions(cm) & 6.5 $\pm$ 0.1 \\
+\hline 
+\# Shoots per Turn & 20 \\
+\hline
+\# Turns made & 48 \\ 
+\hline 
+Diameter of the Target $2r_{mes}$ (cm) & 5.66 $\pm$ 0.01 \\ 
+\hline 
+\end{tabular} 
+
+TABLE 1: Important raw data values from the experiment. 
+
+\paragraph{}
+
+\begin{tabular}{cccc} 
+\multicolumn{4}{c}{Strikes per Angle Interval} \\
+\hline
+$\theta_{mean}(\degree$)& \# + Strikes& \# - Strikes& \# Total\\
+\hline
+\hline 
+20 & 42 & 6 & 48 \\ 
+\hline 
+40 & 23 & 21 & 44 \\ 
+\hline 
+60 & 31 & 28 & 59 \\ 
+\hline 
+80 & 50 & 30 & 80 \\ 
+\hline 
+100 & 55 & 48 & 103 \\ 
+\hline 
+120 & 31 & 54 & 85 \\ 
+\hline 
+140 & 56 & 66 & 112 \\ 
+\hline 
+160 & 77 & 76 & 153 \\ 
+\hline 
+180 & 41 & 41 & 82 \\ 
+\hline 
+\end{tabular} 
+TABLE 2: Raw experimental data of strikes for 20 degree intervals.
+
+\end{center}
+
+It's important that the counts correspond to mean angles that are symmetric around 180 \textdegree should be added up(since sin values are symmetric around $\pi$).
+\begin{center}
+
+\includegraphics[width=1\columnwidth]{Firsthistogram.eps} 
+
+FIG 5: Histogram of strikes per degree.
+
+\includegraphics[width=1\columnwidth]{Sechistogram.eps} 
+
+FIG 5: Histogram of strikes per degree.
+\end{center}
+
+In order to calculate the incident flux $I$, the total number of balls shot should be divided by the whole range that the gun swept.
+
+\begin{equation}
+I = \dfrac{N_{turns}\times N_{shoots/turn}}{l_{interval}} = \dfrac{N_{shoots}}{l_{final} - l_{initial}}
+\end{equation}
+where $l_{interval}$ is distance between initial and final positions divided by number of turns.\\
+$l_{interval}=\frac{6.5 cm}{48}=0.1354$ which is concluded as $I = 147.69 {shoots}/{cm}$.
+
+In order to find its uncertainty, from general uncertainty formula for independent variables
+
+\begin{equation} \label{uncer}
+\sigma^2 = \sum_i (\frac{\partial f}{\partial x_i})^2 \sigma_ {x_i}^2
+\end{equation}
+
+we can derive that
+
+\begin{equation}
+\sigma_{I} = \sqrt{(\dfrac{N_{turns}\times N_{shoots/turn}}{d^2}\sigma_{d})^2}
+\end{equation}
+$\sigma_{d}=0.1$ from measurement error and the result is $\sigma_I = 2.27 \ \dfrac{shoots}{cm}$.
+
+\subsection{First Method: Sine Half Angles vs Number of Strikes}
+
+The Equation \ref{first} can be written as 
+
+\begin{equation}
+dN = \dfrac{Ir}{2}sin\dfrac{\theta_{average}}{2}d\theta.
+\end{equation}
+
+where 
+
+\begin{displaymath}
+d\theta = 20 \degree = \dfrac{\pi}{9}.
+\end{displaymath}
+
+where
+
+\begin{equation}
+\sigma_N = \sqrt{N}
+\end{equation}
+
+due to an equality of Poisson uncertainty in counting experiments.
+
+\begin{center}
+
+\begin{tabular}{ccc}
+\hline
+$sin\frac{\theta}{2}$  & $dN$   & $\sigma_{dN}$  \\ \hline
+0.174 & 48  & 6.928  \\ \hline
+0.342 & 44  & 6.633  \\ \hline
+0.5   & 59  & 7.681  \\ \hline
+0.643 & 80  & 8.944  \\ \hline
+0.766 & 103 & 10.149 \\ \hline
+0.866 & 85  & 9.220  \\ \hline
+0.939 & 122 & 11.045 \\ \hline
+0.985 & 153 & 12.369 \\ \hline
+1     & 82  & 9.055  \\ \hline
+\end{tabular}
+
+\paragraph{}
+TABLE 3: $sin(\dfrac{\theta}{2}) \ vs \ dN$ data values.
+
+\paragraph{}
+
+\includegraphics[width=1\columnwidth]{Sinthetafit.png} 
+
+\paragraph{}
+
+FIG 6: Strikes per sine of half angles.
+
+\end{center}
+
+The slope is $m = d\theta \dfrac{Ir}{2}$, it can be derived
+
+\begin{equation}
+r_1 = 2\dfrac{m}{Id\theta}
+\end{equation}
+
+where we found $r_1 = 3.3 cm$.
+
+From general uncertainty formula from Equation \ref{uncer}, we can derive that
+
+\begin{equation}
+\sigma_{r_{1}} = \dfrac{2}{d\theta}\sqrt{(\dfrac{1}{I}\sigma_{m})^2 + (\dfrac{m}{I^2}\sigma_{I})^2}
+\end{equation}
+
+and $\sigma_{r_{1}} = 0.38 \ cm$.
+
+\subsection{Second Method: Sum of Strikes over the Flux}
+
+If we use integration on Equation 5 we get
+
+\begin{equation}
+\sigma = \sum_i \dfrac{dN_i}{I}
+\end{equation}
+
+and since $\sigma = 2r$, we found $2r_2 = 5.25 \ cm$.
+
+Again, using general uncertainty formula from Equation \ref{uncer}, we can derive that
+
+\begin{equation}
+\sigma_{r_{2}} = \dfrac{1}{2} \sqrt{\sum_i[(\dfrac{1}{I}\sigma_{dN_i})^2 + (\dfrac{dN_i}{I^2}\sigma_{I})^2]}
+\end{equation}
+
+and $\sigma_{r_{2}} = 0.19 \ cm$.
+
+\subsection{Result}
+
+Absolute errors are
+
+\begin{equation}
+\epsilon_{i_{abs}} = | r_{measured} - r_i| 
+\end{equation}
+
+which we conclude as 
+
+\begin{center}
+
+$\epsilon_{1_{abs}} = 0.47 \ cm$ \\
+$\epsilon_{2_{abs}} = 0.20 \ cm$.
+
+\end{center}
+
+If we use
+
+\begin{equation}
+\epsilon_{i_{rel}} = \dfrac{\epsilon_{i_{abs}}}{r_{measured}} \times 100 \%
+\end{equation}
+
+\begin{center}
+
+$\epsilon_{1_{rel}} = 16.5 \% $ \\
+$\epsilon_{2_{rel}} = 7.17 \% $
+
+\end{center}
+
+The error - uncertainty ratios are
+
+\begin{equation}
+\varsigma_i = \dfrac{\epsilon_{i_{abs}}}{\sigma_i}
+\end{equation}
+
+\begin{center}
+$\varsigma_1 = 1.22$ \\
+$\varsigma_2 = 1.07$\\
+\end{center}
+
+So the errors are almost within the estimated boundary.
+
+\section{Conclusion}
+
+Error - uncertainty ratios are both very close to than one but slightly bigger which implies the experiment has some error sources than we included. A list of possible error sources and error reductions follow as:
+
+\begin{itemize}
+
+\item The first and biggest reason of error source he unusual low count at the 170-190 \textdegree interval is suspicious whether we had a typo recording the data or had a mistake while counting the strikes on paper. This value increases the uncertainty of the fit in the first method and spoils the linearity of the data points.
+
+\item Only 776 balls were counted, which shows 19 \% of the balls are lost which affects the result slightly. The reason why there is a big percentage of lost counts can be the above source again.
+
+\item The setup had been used for many years, there is a little but effective deformation here. 
+
+\item Some balls were shot more slowly which concludes in their traces are obscure.
+
+\item Some balls hit the paper secondarily which spoils the tracks on paper.
+
+\item All interactions were imperfect. The trajectories were always varying due to friction / viscosity forces and slight variations in experimental setup such as  slippage on the gun. 
+
+\item Since both experiments were tired and lacking of sleep, there were one time where the track of screw counts get lost. So the number of turns might be 49.
+
+\item Experimenter can't apply equal pressure all the time due to human factor and muscles get tired at the end since it's a rather long experiment. 
+
+It seems to be that second method is much more convenient way to find radius since there is no direct effect of uncertainty due to distribution of strikes. We can see this in results too. Absolute error, relative error and error uncertainty ratios are all better for second method. There would have been a better result if we had used a automated and constant pressure system to shoot the balls.
+
+\end{itemize}
+
+\end{multicols}
+
+\begin{thebibliography}{9}
+
+\bibitem{CERN} http://cms.web.cern.ch/news/what-do-we-mean-cross-section-particle-physics
+
+\bibitem{thom}  Thomson, J.J. (1904) \textit{On the Structure of the Atom: an Investigation of the Stability and Periods of Oscillation of a number of Corpuscles arranged at equal intervals around the Circumference of a Circle; with Application of the Results to the Theory of Atomic Structure}. Philosophical Magazine.
+
+\bibitem{gm} Geiger, Hans (1913) \textit{The Laws of Deflexion of $\alpha$ Particles through Large Angles}.
+
+\bibitem{res} First uploaded at 22:10, 16 April 2014 for Wikimedia Commons by user Kurzon: \texttt{A simple diagram illustrating the Geiger-Marsden experiment. The left column shows the scattering pattern that the experimenters expected to see, given the plum pudding model of the atom. The right column shows the actual results, along with Rutherford's new planetary model.}
+
+\bibitem{rf} Rutherford, Ernest (1911) \textit{The Scattering of $\alpha$ and $\beta$ Particles by Matter and the Structure of the Atom Philosophical Magazine}. 21 (4): 669
+
+\bibitem{gulmez} 
+Gülmez, Erhan (1999) \textit{Advanced Physics Experiments}. pp. 56 - 61
+
+\end{thebibliography}
+\end{document}
+\section{Codes and Data used in Analysis }
+https://github.com/humeyracengiz/PHYS442_2DScattering
